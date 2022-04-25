@@ -73,8 +73,9 @@ TEMPLATES = [
         },
     },
 ]
+from .wsgi import application
 
-WSGI_APPLICATION = 'stocXtune.wsgi.application'
+WSGI_APPLICATION = application
 
 
 # Database
@@ -131,6 +132,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATICFILES_DIRS = [
@@ -138,8 +140,10 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
-AUTH_USER_MODEL = 'users.User'
+AUTH_USER_MODEL= 'users.User'
 
 CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ALLOW_CREDENTIALS = True
+
+
