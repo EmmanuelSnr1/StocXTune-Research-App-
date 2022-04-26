@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-=p1y5dlr#7=o3b9r1!$kn#yg6!0*(zt+elildq!o+m)%&a@9m$'
+SECRET_KEY = 'django-insecure-brf-s4n_^@b^3nt6jty-h8em^svup73&0e(v1y!wh)*_p_*#ke'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,14 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'stocks.apps.StocksConfig',
     'rest_framework',
-    'corsheaders',
-    'users',
+    'stocksapi',
+    'stocks',
+    'users'
 ]
 
 MIDDLEWARE = [
-    'django.middleware.secusssrity.SecurityMiddleware',
+    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -55,13 +55,11 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'stocXtune.urls'
-import os
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            os.path.join(BASE_DIR, 'frontend/build'),
-        ],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -73,9 +71,8 @@ TEMPLATES = [
         },
     },
 ]
-from .wsgi import application
 
-WSGI_APPLICATION = application
+WSGI_APPLICATION = 'stocXtune.wsgi.application'
 
 
 # Database
@@ -125,25 +122,29 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-MEDIA_URL = '/media/'
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES':(
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
+# Permissions
+# AllowAny
+# IsAuthenticated
+# IsAdminUser
+# IsAuthenticatedOrReadOnly
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000"
+]
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'frontend/build/static'),
-    os.path.join(BASE_DIR, 'static'),
-]
-
-AUTH_USER_MODEL= 'users.User'
-
-CORS_ORIGIN_ALLOW_ALL = True
-
-CORS_ALLOW_CREDENTIALS = True
-
-
+#Custom User Model
+AUTH_USER_MODEL = "users.NewUser"
