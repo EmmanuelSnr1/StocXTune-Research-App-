@@ -1,13 +1,23 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+@import "@syncfusion/ej2-base/styles/tailwind.css";
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+    *::-webkit-scrollbar-track {
+        background: #142020;
+    }
+
+    *::-webkit-scrollbar-thumb {
+        background: #0a5353;
+    }
+
+    *::-webkit-scrollbar {
+
+        width: 0.20rem;
+        height: 0.20rem;
+        border: 1px solid #d5d5d5;
+    }
 }
