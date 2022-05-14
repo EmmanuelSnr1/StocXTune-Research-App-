@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<head>
+    <style>
+        td { padding: 5px; }
+        .bullish { background: green; color: white;  }
+        .bearish { background: red; color: white; }
+    </style>
+</head>
+
+
+<h1>Technical Scanner.</h1>
+
+<form>
+    <select name="pattern">
+        {% for keys, pattern in patterns.items %}
+        <option value="{{ keys }}" {% if keys == current_pattern %} selected="selected"{% endif %} >
+            {{ pattern }}
+        </option>
+        
+        {% endfor %}
+    </select>
+    <input type="submit" value="Scan">
+</form>
+
+<table>
+    <tr>
+        <th>
+            <h3>Symbol</h3>
+        </th>
+        <th>
+            <h3>Company Name</h3>
+        </th>
+        <th>
+            <h3>Signal</h3>
+        </th>
+    </tr>
+    {% for stock,companies in stocks.items %}
+        {% if companies.CDLDOJISTAR %}
+            <tr>
+                <td><h4>{{ stock }}</h4> </td>
+                <td><h4>{{ companies.company }}</h4></td>
+                <td class="{{ companies.CDLDOJISTAR }}"><h4>{{ companies.CDLDOJISTAR }}</h4></td> 
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <img src="https://finviz.com/chart.ashx?t={{ stock }}&ty=c&ta=1&p=d&s=l" />
+                </td>
+            </tr>
+        {% elif companies.CDLENGULFING %}
+            <tr>
+                <td><h4>{{ stock }}</h4> </td>
+                <td><h4>{{ companies.company }}</h4></td>
+                <td class="{{ companies.CDLENGULFING }}"><h4>{{ companies.CDLENGULFING }}</h4></td> 
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <img src="https://finviz.com/chart.ashx?t={{ stock }}&ty=c&ta=1&p=d&s=l" />
+                </td>
+            </tr>
+        {% elif companies.CDLSHOOTINGSTAR %}
+        <tr>
+            <td><h4>{{ stock }}</h4> </td>
+            <td><h4>{{ companies.company }}</h4></td>
+            <td class="{{ companies.CDLSHOOTINGSTAR }}"><h4>{{ companies.CDLSHOOTINGSTAR }}</h4></td> 
+        </tr>
+        <tr>
+            <td colspan="3">
+                <img src="https://finviz.com/chart.ashx?t={{ stock }}&ty=c&ta=1&p=d&s=l" />
+            </td>
+        </tr>
+        {% elif companies.CDLUPSIDEGAP2CROWS %}
+        <tr>
+            <td><h4>{{ stock }}</h4> </td>
+            <td><h4>{{ companies.company }}</h4></td>
+            <td class="{{ companies.CDLUPSIDEGAP2CROWS }}"><h4>{{ companies.CDLUPSIDEGAP2CROWS }}</h4></td> 
+        </tr>
+        <tr>
+            <td colspan="3">
+                <img src="https://finviz.com/chart.ashx?t={{ stock }}&ty=c&ta=1&p=d&s=l" />
+            </td>
+        </tr>
+        {% elif companies.CDL3LINESTRIKE %}
+        <tr>
+            <td><h4>{{ stock }}</h4> </td>
+            <td><h4>{{ companies.company }}</h4></td>
+            <td class="{{ companies.CDL3LINESTRIKE }}"><h4>{{ companies.CDL3LINESTRIKE }}</h4></td> 
+        </tr>
+        <tr>
+            <td colspan="3">
+                <img src="https://finviz.com/chart.ashx?t={{ stock }}&ty=c&ta=1&p=d&s=l" />
+            </td>
+        </tr>
+        {% elif companies.CDLBELTHOLD %}
+        <tr>
+            <td><h4>{{ stock }}</h4> </td>
+            <td><h4>{{ companies.company }}</h4></td>
+            <td class="{{ companies.CDLBELTHOLD }}"><h4>{{ companies.CDLBELTHOLD }}</h4></td> 
+        </tr>
+        <tr>
+            <td colspan="3">
+                <img src="https://finviz.com/chart.ashx?t={{ stock }}&ty=c&ta=1&p=d&s=l" />
+            </td>
+        </tr>
+        
+            
+        {% endif %}    
+{% endfor %}
+</table>
+
+
+
+
+
+
+{% endblock %}

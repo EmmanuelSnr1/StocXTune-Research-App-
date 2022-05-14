@@ -19,7 +19,7 @@ export default function RegisterPage() {
 
     
 
-    // Handle on FirstNName change event
+    // Handle on Input change events
     const handleInput = (event) => {
         console.log(event.target.id)
        
@@ -53,6 +53,12 @@ export default function RegisterPage() {
         }
         setSubmitted(false);
     }
+
+    //Handles the submit button
+    const handleSubmit = (event) => {
+        alert('A name was submitted: ' + this.state.value);
+        event.preventDefault();
+      }
 
     return (
         <section className="pt-32 bg-cover bg-[url('../public/assets/register_bg.png')] min-h-screen">
@@ -95,7 +101,7 @@ export default function RegisterPage() {
                                 className=' mr-2 h-14 uppercase text-md bg-lighter-teal/20 input w-full placeholder:capitalize placeholder:text-neutral/50'
                                 placeholder='Confirm your password' type="password" aria-autocomplete="list"/>
                         </div>
-                        <button  className="btn btn-primary col-span-2 btn-lg">Create an Account</button>
+                        <button className="btn btn-primary col-span-2 btn-lg" >Create an Account</button>
                     </div>
                 </div>
                 <div className="col-span-3"></div>

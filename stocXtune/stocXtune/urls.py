@@ -22,11 +22,12 @@ from rest_framework_simplejwt.views import (
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('stocks.urls', namespace='home')),
-    path('api/', include('stocks.urls',namespace='stocks_api')),
-    path('api/user/', include('users.urls', namespace='users')),
+    path('api/', include('stocks.urls', namespace='home')),
+    # path('api/', include('stocks.urls',namespace='stocks_api')),
+    path('api/user/', include('users.urls', namespace='users')),    
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh', TokenRefreshView.as_view(), name='token_obtain_pair'),
-
+    path('techscanner/', include('techscanner.urls')),
+    path('techscanner_api/', include('techscanner_api.urls')),
     #path('', include('stocksapi.urls', namespace='stocksapi')),
 ]
