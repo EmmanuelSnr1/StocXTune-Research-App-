@@ -52,10 +52,13 @@ def techscanner(request):
                 #     print("{} triggered {}".format(filename,pattern))
                 if last > 0:
                     stocks[symbol][pattern] = 'bullish'
+                    print (stocks[symbol])
                 elif last < 0:
                     stocks[symbol][pattern] = 'bearish'
+                    print (stocks[symbol])
                 else:
                     stocks[symbol][pattern] = None
+                    print (stocks[symbol])
             except :
                 pass
             

@@ -3,9 +3,9 @@ from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import generics
-from stocks.models import Stock
-from stocks.models import UserWatchlist
-from stocks.models import WatchlistStocks
+from watchlists_api.models import Stock
+from watchlists_api.models import UserWatchlist
+from watchlists_api.models import WatchlistStocks
 from .serializers import StockSerializer
 from .serializers import UserWatchlistSerializer
 from .serializers import WatchlistStockSerializer

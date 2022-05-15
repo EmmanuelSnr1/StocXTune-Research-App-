@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Watchlist Detail: {{ object }}</h1>
+
+<a href="{% url 'watchliststock-create' %}"> Add More stocks </a> 
+<br>    
+
+
+{% for stock in stocks %}
+    {{stock}}<br>
+
+    {%empty%}
+        <h3>No stocks available in this watchlist</h3>
+{% endfor %}
+
+{% endblock %}

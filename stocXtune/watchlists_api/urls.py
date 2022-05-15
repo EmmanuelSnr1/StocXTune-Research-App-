@@ -9,9 +9,8 @@ urlpatterns = [
     path ('',StockList.as_view(),name = 'stocklist'),
     path ('watchlistdetail/<int:pk>/',UserWatchlistDetail.as_view(),name = 'watchlist'),
     path ('watchlistlist/',UserWatchlistList.as_view(), name = 'watchlistlist'),   
-    path ('watchliststocks/<int:pk>/',WatchlistStocksList.as_view(), name = 'watchliststocks'),
-    path ('watchliststocksdetail',WatchlistStocksDetail.as_view(), name = 'watchliststocksdetail'),
-    
+    path ('watchliststocks/',WatchlistStocksList.as_view(), name = 'watchliststocks'),
+    path ('watchliststocksdetail/<int:pk>/',WatchlistStocksDetail.as_view(), name = 'watchliststocksdetail'),  
 ]
 
 # path('', views.getRoutes, name = "routes"),

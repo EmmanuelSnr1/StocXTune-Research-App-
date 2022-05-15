@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1> Watchlist Delete</h1>
+<a href="{% url 'watchlists' %}"> Go Back </a>
+
+<form method = "POST" action = ""> 
+    {%csrf_token%}
+    <p> Are you sure you want to delete this watchlist "{{ watchlist }}"</p>
+    <input type = "submit" value="Delete">
+</form>
+
+
+{% endblock %}
