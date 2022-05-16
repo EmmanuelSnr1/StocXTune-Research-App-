@@ -1,8 +1,12 @@
 from django.urls import path
-from . import views
 from .views import WatchlistStocksDetail, WatchlistStocksList, StockList, StockDetail, UserWatchlistList, UserWatchlistDetail
 
-app_name = 'stocks'
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
+
+app_name = 'watchlists_api'
 
 urlpatterns = [
     path ('<int:pk>/',StockDetail.as_view(),name = 'stockdetail'),
@@ -10,7 +14,8 @@ urlpatterns = [
     path ('watchlistdetail/<int:pk>/',UserWatchlistDetail.as_view(),name = 'watchlist'),
     path ('watchlistlist/',UserWatchlistList.as_view(), name = 'watchlistlist'),   
     path ('watchliststocks/',WatchlistStocksList.as_view(), name = 'watchliststocks'),
-    path ('watchliststocksdetail/<int:pk>/',WatchlistStocksDetail.as_view(), name = 'watchliststocksdetail'),  
+    path ('watchliststocksdetail/<int:pk>/',WatchlistStocksDetail.as_view(), name = 'watchliststocksdetail'),
+    
 ]
 
 # path('', views.getRoutes, name = "routes"),
@@ -20,3 +25,6 @@ urlpatterns = [
     # path('userwatchlists/<str:pk>/', views.getUserWatchlist, name = "userwatchlist"),
     # path('watchliststocks/', views.getWatchlistStocks, name = "watchliststocks"),
     # path('watchliststocks/<str:pk>/', views.getWatchliststock, name = "watchliststock"),
+    
+    
+

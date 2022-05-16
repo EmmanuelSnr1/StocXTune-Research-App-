@@ -47,6 +47,7 @@ def techscanner(request):
             try:
                 results = pattern_function(df['Open'], df['High'], df['Low'], df['Close'])
                 last = results.tail(1).values[0]
+                print("the test number is")
                 print(last)
                 # if last !=0:
                 #     print("{} triggered {}".format(filename,pattern))

@@ -10,7 +10,7 @@ from .serializers import StockSerializer
 from .serializers import UserWatchlistSerializer
 from .serializers import WatchlistStockSerializer
 
-from rest_framework.permissions import IsAdminUser
+from rest_framework.permissions import IsAuthenticated
 
 class StockList(generics.ListCreateAPIView):
     #permission_classes =[IsAdminUser]
@@ -20,19 +20,75 @@ class StockDetail(generics.RetrieveAPIView):
     queryset = Stock.objects.all()
     serializer_class = StockSerializer
 class UserWatchlistList(generics.ListCreateAPIView):
+    permission_classes = [IsAuthenticated]
     queryset = UserWatchlist.objects.all()
     serializer_class = UserWatchlistSerializer
 class UserWatchlistDetail(generics.RetrieveAPIView):
+    permission_classes = [IsAuthenticated]
     queryset = UserWatchlist.objects.all()
     serializer_class = UserWatchlistSerializer
 class WatchlistStocksList(generics.ListCreateAPIView):
+    permission_classes = [IsAuthenticated]
     queryset = WatchlistStocks.objects.all()
     serializer_class = WatchlistStockSerializer
 class WatchlistStocksDetail(generics.RetrieveAPIView):
+    permission_classes = [IsAuthenticated]
     queryset = WatchlistStocks.objects.all()
     serializer_class = WatchlistStockSerializer
+    
+#Crud classes for Watchlist
+# class CreateWatchlist(APIView):
+#     permission_classes = [permissions.IsAuthenticated]
+#     parser_classes = [MultiPartParser, FormParser]
+
+#     def post(self, request, format=None):
+#         print(request.data)
+#         serializer = UserWatchlistSerializer(data=request.data)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response(serializer.data, status=status.HTTP_200_OK)
+#         else:
+#             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+# class AdminWatchlistDetail(generics.RetrieveAPIView):
+#     permission_classes = [permissions.IsAuthenticated]
+#     queryset = UserWatchlist.objects.all()
+#     serializer_class = UserWatchlistSerializer
+
+
+# class EditWatchlist(generics.UpdateAPIView):
+#     permission_classes = [permissions.IsAuthenticated]
+#     serializer_class = UserWatchlistSerializer
+#     queryset = UserWatchlist.objects.all()
+
+
+# class DeleteWatchlist(generics.RetrieveDestroyAPIView):
+#     permission_classes = [permissions.IsAuthenticated]
+#     serializer_class = UserWatchlistSerializer
+#     queryset = UserWatchlist.objects.all()
+
+
+""" Concrete View Classes
+#CreateAPIView
+Used for create-only endpoints.
+#ListAPIView
+Used for read-only endpoints to represent a collection of model instances.
+#RetrieveAPIView
+Used for read-only endpoints to represent a single model instance.
+#DestroyAPIView
+Used for delete-only endpoints for a single model instance.
+#UpdateAPIView
+Used for update-only endpoints for a single model instance.
+##ListCreateAPIView
+Used for read-write endpoints to represent a collection of model instances.
+RetrieveUpdateAPIView
+Used for read or update endpoints to represent a single model instance.
+#RetrieveDestroyAPIView
+Used for read or delete endpoints to represent a single model instance.
+#RetrieveUpdateDestroyAPIView
+Used for read-write-delete endpoints to represent a single model instance.
+"""
 
 
 
