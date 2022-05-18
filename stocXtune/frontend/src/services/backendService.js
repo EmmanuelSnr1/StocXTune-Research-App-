@@ -1,15 +1,24 @@
 import { backendBaseUrl } from "../core/constants";
 
-const baseUrl = 'https://cloud.iexapis.com/'
-const token = 'pk_d0153e3e12ee4a9f83ae3a1c3c38a8cd';
 
 /*
 Register a new User account
  */
-export async function register(paylaod) {
-    const response = await fetch(backendBaseUrl + "/user/register", {method: 'POST'})
+async function register({first_name, last_name, user_name, email, password}) {
+    const response = await fetch(backendBaseUrl + "user/register/", {
+        method: 'POST',
+        body: JSON.stringify(arguments[0]),
+        headers: {
+            "Content-Type":"application/json"
+        }
+    })
     if (response.ok) {
         return response.json()
     }
     throw response;
+}
+
+
+export  const BackendService = {
+    register
 }

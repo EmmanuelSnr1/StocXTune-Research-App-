@@ -34,14 +34,15 @@ import {
 import PageNotFound from "./PageNotFound";
 import {StockDetailSection} from "../components/StockDetailSection";
 import {useEffect} from "react";
+import {iexBaseUrl, iexToken} from "../core/constants";
 
 
 export default function StockDetailPage() {
 
     const {symbol} = useParams()
-    const {data: company, error: companyError, loading: companyLoading} = useFetch('/stock/' + symbol + '/company')
-    const {data: logo, error: logoError, loading: logoLoading} = useFetch('/stock/' + symbol + '/logo')
-    const {data: series, error: seriesError, loading: seriesLoading} = useFetch('/stock/' + symbol + '/chart')
+    const {data: company, error: companyError, loading: companyLoading} = useFetch(iexBaseUrl,iexToken,'/stock/' + symbol + '/company', )
+    const {data: logo, error: logoError, loading: logoLoading} = useFetch(iexBaseUrl,iexToken,'/stock/' + symbol + '/logo')
+    const {data: series, error: seriesError, loading: seriesLoading} = useFetch(iexBaseUrl,iexToken,'/stock/' + symbol + '/chart')
     let navigate = useNavigate();
 
     useEffect(() => {

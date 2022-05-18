@@ -2,6 +2,7 @@ import {FaChevronLeft, FaChevronRight} from "react-icons/fa";
 import NumberFormat from 'react-number-format';
 import useFetch from "../services/useFetch";
 import {useNavigate} from 'react-router-dom';
+import {iexBaseUrl, iexToken} from "../core/constants";
 
 function renderTableRow(data, navigate) {
     function navigateToDetails() {
@@ -32,7 +33,7 @@ export function TrendingPortfolios({title, url}) {
 
     const navigate = useNavigate();
 
-    const {data: gainersList, error, loading} = useFetch(url, "&displayPercent=true");
+    const {data: gainersList, error, loading} = useFetch(iexBaseUrl,iexToken,url, 'GET', null, "&displayPercent=true");
 
     if (error) throw  error;
 
